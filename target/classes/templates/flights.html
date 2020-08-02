@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body class="container" style="margin-top:50px;">
+
+
+	<div align="center">
+		<a class="btn btn-primary" th:href="@{/}">Home</a> | 
+		<a class="btn btn-primary" th:href="@{/search}">Search</a> |
+		<!-- <a class="btn btn-primary" th:href="@{/search-booking}">Search Booking</a> | -->
+		<a class="btn btn-primary" th:href="@{/regForm}">Register</a> |
+		<a class="btn btn-primary" th:href="@{/loginForm}">Login</a> |
+		<a class="btn btn-primary" th:href="@{/checkin}">CheckIn</a> 
+		
+		  
+	</div>
+	
+	<hr width="50%"/>
+	
+
+	<div align="center">
+
+
+
+		<table border="1" class="table table-striped" style="text-align:center;">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Flight</th>
+					<th>From</th>
+					<th>To</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Fare</th>
+					<th>Operation</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="flight,state : ${flights}">
+					<td th:text="${state.count}" />
+					<td th:text="${flight.flightNumber}" />
+					<td th:text="${flight.origin}" />
+					<td th:text="${flight.destination}" />
+					<td th:text="${flight.flightDate}" />
+					<td th:text="${flight.flightTime}" />
+
+					<td th:text="${flight.fares.fare}" />
+					<td><a class="btn btn-secondary"
+						th:href="@{/book(id=${flight.id},numberofPassengers=${numberofPassengers})}">Book</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr width="50%"/>
+	</div>
+
+</body>
+</html>

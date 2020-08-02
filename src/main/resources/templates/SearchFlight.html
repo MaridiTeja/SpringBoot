@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>www.flybrownfield.com</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<link href="/css/main.css" th:href="@{/css/main.css}" rel="stylesheet"
+	media="screen" />
+		<link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body class="container" style="margin-top:50px;">
+
+
+	<div align="center">
+		<a class="btn btn-primary" th:href="@{/}">Home</a> | 
+		<a class="btn btn-primary" th:href="@{/search}">Search</a> |
+		<!-- <a class="btn btn-primary" th:href="@{/search-booking}">Search Booking</a> | -->
+		<a class="btn btn-primary" th:href="@{/regForm}">Register</a> |
+		<a class="btn btn-primary" th:href="@{/loginForm}">Login</a> |
+		<a class="btn btn-primary" th:href="@{/checkin}">CheckIn</a> 
+		
+		  
+	</div>
+
+<hr width="50%"/>
+	<div align="center" class="form-style-8">
+		<h2>Flight Search</h2>
+		<form action="#" th:action="@{/searchResults}"
+			th:object="${searchQuery}" method="post">
+
+			<table>
+				<tr>
+					<td>Travelling from</td>
+					<td><input class="form-control" type="text" th:field="*{origin}" /></td>
+				</tr>
+				<tr>
+					<td>Going to</td>
+					<td><input class="form-control" type="text" th:field="*{destination}" /></td>
+				</tr>
+				<tr>
+					<td>Planning on</td>
+					<td><input class="form-control" type="date" th:name="flightDate"
+						th:value="${searchQuery.flightDate}" /></td>
+				</tr>
+				<tr>
+					<td>Number of Passengers</td>
+					<td><input class="form-control" type=number th:field="*{numberofPassengers}"/></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td style="padding-top:10px;"><input class="btn btn-primary" type="submit" value="Submit" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><p th:text="${errorMsg}"/></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<hr width="50%"/>
+	
+</body>
+</html>
